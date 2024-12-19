@@ -34,14 +34,27 @@ int octalToDecimal(int octal)
 
 int hexadecimalToDecimal(char hex[])
 {
-    int i, power = 0, decimal = 0;
-
-    for(i = strlen(hex)-1;i>=0;i--)
-    {
-        printf("%c",hex[i]);
-
+    int decimal = 0, base = 1, i = 0;
+    while (hex[i] != '\0')
+        {
+        int value = 0;
+        if (hex[i] >= '0' && hex[i] <= '9')
+            {
+                value = hex[i] - '0';
+            }
+        else if (hex[i] >= 'A' && hex[i] <= 'F')
+            {
+                value = hex[i] - 'A' + 10;
+            }
+        else if (hex[i] >= 'a' && hex[i] <= 'f')
+            {
+                value = hex[i] - 'a' + 10;
+            }
+        decimal += value * base;
+        base *= 16;
+        i++;
     }
-    return 10;
+    return decimal;
 }
 
 int decimalToBinary(int decimal) {
@@ -71,26 +84,26 @@ void convertTo(int val_inDecimal)
         {
         case 1:
             bool_ch2_chosen++;
-            system("cls");
+            clrscr();
             printf("On converting to Binary, Input = %d", decimalToBinary(val_inDecimal));
             break;
         case 2:
             bool_ch2_chosen++;
-            system("cls");
+            clrscr();
             printf("On converting to decimal, Input = %d",val_inDecimal);
             break;
         case 3:
             bool_ch2_chosen++;
-            system("cls");
+            clrscr();
             printf("On converting to Octal, Input = %o",val_inDecimal);
-            break;
+            break;e
         case 4:
             bool_ch2_chosen++;
-            system("cls");
+            clrscr();
             printf("On converting to Hexadecimal, Input = %x", val_inDecimal);
             break;
         default:
-            system("cls");
+            clrscr();
             printf("#######################################################################\n");
             printf("INVALID CHOICE TRY AGAIN\n");
             printf("#######################################################################\n");
@@ -119,7 +132,7 @@ void main()
         {
         case 1:
             bool_ch1_chosen++;
-            system("cls");
+            clrscr();
             printf("Enter your binary value(max 10 digits):");
             scanf("%s",&str_inp);
             printf("\n");
@@ -128,7 +141,7 @@ void main()
             break;
         case 2:
             bool_ch1_chosen++;
-            system("cls");
+            clrscr();
             printf("Enter your decimal value(Base 10 not floating point):");
             scanf("%d",&int_inp);
             printf("\n");
@@ -137,7 +150,7 @@ void main()
             break;
         case 3:
             bool_ch1_chosen++;
-            system("cls");
+            clrscr();
             printf("Enter your octal value(max 5 digits with 0-7 numbers):");
             scanf("%d",&int_inp);
             printf("\n");
@@ -146,7 +159,7 @@ void main()
             break;
         case 4:
             bool_ch1_chosen++;
-            system("cls");
+            clrscr();
             printf("Enter your hexadecimal value:");
             scanf("%s",&str_inp);
             printf("\n");
@@ -154,7 +167,7 @@ void main()
             convertTo(val_convToDecimal);
             break;
         default:
-            system("cls");
+            clrscr();
             printf("#######################################################################\n");
             printf("INVALID CHOICE TRY AGAIN\n");
             printf("#######################################################################\n");
